@@ -29,12 +29,30 @@
 
   <section>
     <h2>Publications</h2>
-    <ul>
-      <li>Fazli, Mehrdad, et al. <i>“Mitigating Hallucination in Large Vision-Language Models via Adaptive Attention Calibration.”</i> arXiv:2505.21472 (2025).</li>
-      <li>Wei, Bowen, Mehrdad Fazli, et al. <i>“Learning to Explain: Prototype-Based Surrogate Models for LLM Classification.”</i> arXiv:2505.18970 (2025).</li>
-      <li>Tavasoli, Ali, Mehrdad Fazli, et al. <i>“Competitive Pricing Under Local Network Effects.”</i> EJOR (2023).</li>
-      <li>Fazli, Mehrdad, et al. <i>“Leveraging Deep Learning to Improve COVID-19 Forecasting Using Wastewater Viral Load.”</i> IEEE Big Data (2023).</li>
-      <li>... [Add/Edit as needed]</li>
+    <ul class="pub-list">
+      <li>
+        Fazli, Mehrdad, et al. <i>“Mitigating Hallucination in Large Vision-Language Models via Adaptive Attention Calibration.”</i> arXiv:2505.21472 (2025)
+        <div class="pub-buttons">
+          <a class="btn" href="https://arxiv.org/abs/2505.21472" target="_blank">PDF</a>
+          <a class="btn" href="https://github.com/mehrdadfazli/CAAC" target="_blank">Code</a>
+          <button class="btn toggle-abstract" onclick="toggleAbstract(this)">Abstract</button>
+        </div>
+        <div class="abstract" style="display: none;">
+          This paper introduces CAAC, a decoding-time method that adaptively calibrates attention weights on image tokens to mitigate hallucinations in vision-language models. It requires no retraining or architectural change and achieves strong performance on multiple benchmarks.
+        </div>
+      </li>
+      <li>
+        Wei, Bowen, Mehrdad Fazli, et al. <i>“Learning to Explain: Prototype-Based Surrogate Models for LLM Classification.”</i> arXiv:2505.18970 (2025)
+        <div class="pub-buttons">
+          <a class="btn" href="https://arxiv.org/abs/2505.18970" target="_blank">PDF</a>
+          <a class="btn" href="#" target="_blank">Code</a>
+          <button class="btn toggle-abstract" onclick="toggleAbstract(this)">Abstract</button>
+        </div>
+        <div class="abstract" style="display: none;">
+          We propose a prototype-based surrogate model that explains black-box LLM predictions by identifying influential examples in training data. Our method improves interpretability without compromising performance.
+        </div>
+      </li>
+      <!-- Add more publications similarly -->
     </ul>
   </section>
 
@@ -83,5 +101,12 @@
   <footer>
     <p>© 2025 Mehrdad Fazli · Powered by GitHub Pages</p>
   </footer>
+
+  <script>
+    function toggleAbstract(button) {
+      const abstractDiv = button.nextElementSibling;
+      abstractDiv.style.display = abstractDiv.style.display === "none" ? "block" : "none";
+    }
+  </script>
 </body>
 </html>
