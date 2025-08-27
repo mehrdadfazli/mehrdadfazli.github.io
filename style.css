@@ -183,3 +183,33 @@ footer {
   border-left: 3px solid #007acc;
   display: none;
 }
+
+.btn {
+  display: inline-block;
+  margin: 4px 6px 4px 0;
+  padding: 4px 10px;
+  font-size: 0.75em;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  cursor: pointer;
+  background-color: #ddd;
+  color: #000;
+  transition: background-color 0.2s;
+}
+
+.btn-pdf {
+  background-color: #e6f0fa; /* light blue */
+}
+
+.btn-code {
+  background-color: #fbe4e6; /* light red */
+}
+
+.btn-abs {
+  background-color: #e7f6e7; /* light green */
+}
+
+.btn:hover {
+  background-color: #ccc;
+}
