@@ -47,13 +47,6 @@ ul {
   padding-left: 20px;
 }
 
-.project-img {
-  max-width: 100%;
-  height: auto;
-  border: 1px solid #ccc;
-  margin-top: 10px;
-}
-
 footer {
   text-align: center;
   font-size: 0.9em;
@@ -63,26 +56,71 @@ footer {
   margin-top: 40px;
 }
 
+/* === News Section === */
+.news-list li {
+  margin-bottom: 8px;
+}
+
+/* === Projects === */
+.project {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 30px;
+}
+
+.project img {
+  width: 150px;
+  height: auto;
+  margin-right: 20px;
+  border: 1px solid #ccc;
+}
+
+.project-text h3 {
+  margin-top: 0;
+}
+
+/* === Buttons === */
+.pub-buttons {
+  margin-top: 5px;
+}
+
 .btn {
   display: inline-block;
   margin: 5px 5px 5px 0;
-  padding: 5px 10px;
-  font-size: 0.9em;
+  padding: 3px 8px;
+  font-size: 0.8em;
   border: none;
   border-radius: 5px;
-  background-color: #007acc;
-  color: white;
+  color: #fff;
   text-decoration: none;
   cursor: pointer;
+  background-color: #aaa;
+}
+
+.btn-pdf {
+  background-color: #add8e6; /* Light Blue */
+  color: #000;
+}
+
+.btn-code {
+  background-color: #f4cccc; /* Light Red */
+  color: #000;
+}
+
+.btn-abs {
+  background-color: #d9ead3; /* Light Green */
+  color: #000;
 }
 
 .btn:hover {
-  background-color: #005f99;
+  opacity: 0.8;
 }
 
+/* === Abstract === */
 .abstract {
   background-color: #f1f1f1;
   padding: 10px;
-  margin-top: 10px;
+  margin-top: 8px;
   border-left: 3px solid #007acc;
+  display: none;
 }
