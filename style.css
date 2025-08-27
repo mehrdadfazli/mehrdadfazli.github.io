@@ -124,3 +124,62 @@ footer {
   border-left: 3px solid #007acc;
   display: none;
 }
+
+.project {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 30px;
+}
+
+.project img {
+  width: 22%;
+  max-width: 200px;
+  height: auto;
+  margin-right: 20px;
+  border: 1px solid #ccc;
+  object-fit: contain;
+}
+
+.project-text {
+  flex: 1;
+}
+
+/* === Styled buttons for publications === */
+.btn {
+  display: inline-block;
+  margin: 4px 6px 4px 0;
+  padding: 4px 10px;
+  font-size: 0.75em;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  cursor: pointer;
+  background-color: #ddd;
+  color: #000;
+  transition: background-color 0.2s;
+}
+
+.btn-pdf {
+  background-color: #e6f0fa; /* light blue */
+}
+
+.btn-code {
+  background-color: #fbe4e6; /* light red */
+}
+
+.btn-abs {
+  background-color: #e7f6e7; /* light green */
+}
+
+.btn:hover {
+  background-color: #ccc;
+}
+
+/* === Abstract section under publications === */
+.abstract {
+  background-color: #f1f1f1;
+  padding: 10px;
+  margin-top: 8px;
+  border-left: 3px solid #007acc;
+  display: none;
+}
