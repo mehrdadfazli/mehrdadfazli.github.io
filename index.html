@@ -5,6 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Mehrdad Fazli</title>
   <meta name="description" content="Mehrdad Fazli — Ph.D. candidate in Computer Science at George Mason University, working on hallucination in large vision-language models.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Mehrdad Fazli · Ph.D. Candidate, George Mason University">
+  <meta property="og:description" content="Multimodal AI and hallucination in vision-language models. Research at GMU; internships at Google, Amazon, and Wayfair.">
+  <meta property="og:url" content="https://mehrdadfazli.github.io/">
+  <meta property="og:image" content="https://mehrdadfazli.github.io/images/profile.jpg">
+  <meta name="twitter:card" content="summary">
+  <link rel="icon" href="images/profile.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:wght@600;700&display=swap" rel="stylesheet">
@@ -19,8 +26,7 @@
       --accent-soft: #e8f0f8;
       --max: 860px;
     }
-    @media (prefers-color-scheme: dark) {
-      :root {
+    :root[data-theme="dark"] {
         --bg: #14171b;
         --bg-soft: #1b1f24;
         --text: #e6e8eb;
@@ -29,7 +35,6 @@
         --accent: #6fa8dc;
         --accent-soft: #1e2a36;
       }
-    }
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; scroll-padding-top: 72px; }
     body {
@@ -172,15 +177,55 @@
     .area-title { font-size: 15px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); margin: 0 0 12px; }
     .card.current { border-color: var(--accent); box-shadow: inset 3px 0 0 var(--accent); }
     .award { display: inline-block; font-size: 12px; font-weight: 600; color: #8a5a00; background: #fdf1d8; padding: 1px 8px; border-radius: 6px; margin-left: 6px; vertical-align: middle; }
-    @media (prefers-color-scheme: dark) { .award { color: #f3c969; background: #3a2e14; } }
+    :root[data-theme="dark"] .award { color: #f3c969; background: #3a2e14; }
     @media (max-width: 680px) { .logo img { width: 30px; height: 30px; } }
+
+    /* v3: color-coded links + abstracts */
+    .pill-links a, .pill-links button { font: inherit; font-size: 13px; font-weight: 500; padding: 2px 10px; border-radius: 6px; border: 1px solid transparent; cursor: pointer; }
+    .pill-links a.l-paper { background: #e7f0fb; color: #1d5c96; border-color: #c9dcf2; }
+    .pill-links a.l-arxiv { background: #fbeaea; color: #a3261f; border-color: #f2cdcb; }
+    .pill-links a.l-code  { background: #eceef1; color: #24292f; border-color: #d5d9de; }
+    .pill-links button.l-abs { background: #f1ebfb; color: #6a3fb5; border-color: #ddd0f3; }
+    .pill-links a:hover, .pill-links button:hover { filter: brightness(0.95); text-decoration: none; }
+    .pill-links button.l-abs[aria-expanded="true"] { background: #6a3fb5; color: #fff; }
+    .abstract { margin-top: 10px; padding: 12px 14px; font-size: 14.5px; line-height: 1.6; color: var(--text); background: var(--bg-soft); border-left: 3px solid #6a3fb5; border-radius: 0 8px 8px 0; }
+    :root[data-theme="dark"] .pill-links a.l-paper { background: #1c2c3e; color: #8fbfeb; border-color: #2b4360; }
+    :root[data-theme="dark"] .pill-links a.l-arxiv { background: #3a1f1f; color: #f0a19b; border-color: #5a2d2b; }
+    :root[data-theme="dark"] .pill-links a.l-code  { background: #262b31; color: #d6dadf; border-color: #3a4048; }
+    :root[data-theme="dark"] .pill-links button.l-abs { background: #2b2140; color: #c6aef2; border-color: #443366; }
+    :root[data-theme="dark"] .pill-links button.l-abs[aria-expanded="true"] { background: #8a63d2; color: #fff; }
+
+    /* v4 */
+    .statement { font-family: "Source Serif 4", Georgia, serif; font-size: 19px; font-weight: 600; line-height: 1.45; margin: 0 0 16px !important; color: var(--text); }
+    .market { margin: 14px 0 4px; padding: 12px 16px; border-radius: 10px; background: var(--accent-soft); border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent); font-size: 15px; text-align: left; }
+    .fig { display: none; width: 100%; height: 170px; object-fit: contain; background: #fff; border: 1px solid var(--border); border-radius: 8px; padding: 8px; margin: 12px 0 2px; cursor: zoom-in; transition: box-shadow .15s; }
+    .fig:hover { box-shadow: 0 2px 12px rgba(0,0,0,.12); }
+    .lightbox { position: fixed; inset: 0; z-index: 50; background: rgba(10,12,15,.82); display: flex; align-items: center; justify-content: center; padding: 24px; cursor: zoom-out; }
+    .lightbox img { max-width: min(1400px, 100%); max-height: 100%; background: #fff; border-radius: 10px; padding: 12px; box-shadow: 0 10px 40px rgba(0,0,0,.4); }
+    .theme-toggle { background: none; border: 1px solid var(--border); border-radius: 8px; width: 34px; height: 34px; flex: none; cursor: pointer; color: var(--muted); display: inline-flex; align-items: center; justify-content: center; }
+    .theme-toggle:hover { color: var(--accent); border-color: var(--accent); }
+    .theme-toggle svg { width: 17px; height: 17px; fill: currentColor; }
+    .theme-toggle .sun { display: none; }
+    :root[data-theme="dark"] .theme-toggle .sun { display: block; }
+    :root[data-theme="dark"] .theme-toggle .moon { display: none; }
+    .nav-right { display: flex; align-items: center; gap: 16px; min-width: 0; }
+    .nav-right ul { min-width: 0; }
   </style>
+  <script>
+    (function () {
+      var t = null;
+      try { t = localStorage.getItem('theme'); } catch (e) {}
+      if (!t) t = (window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
 </head>
 <body>
 
 <nav>
   <div class="wrap">
     <a class="brand" href="#">Mehrdad Fazli</a>
+    <div class="nav-right">
     <ul>
       <li><a href="#about">About</a></li>
       <li><a href="#news">News</a></li>
@@ -189,6 +234,11 @@
       <li><a href="#publications">Publications</a></li>
       <li><a href="assets/Mehrdad_Fazli_CV.pdf">CV</a></li>
     </ul>
+    <button class="theme-toggle" type="button" aria-label="Toggle dark mode">
+      <svg class="moon" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      <svg class="sun" viewBox="0 0 24 24"><path d="M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0-5 1 3h-2zm0 20-1-3h2zM2 12l3-1v2zm20 0-3 1v-2zM4.9 4.9l2.8 1.4-1.4 1.4zm14.2 14.2-2.8-1.4 1.4-1.4zM4.9 19.1l1.4-2.8 1.4 1.4zM19.1 4.9l-1.4 2.8-1.4-1.4z"/></svg>
+    </button>
+    </div>
   </div>
 </nav>
 
@@ -203,6 +253,7 @@
     <div>
       <h1>Mehrdad Fazli</h1>
       <p class="role">Ph.D. Candidate in Computer Science · George Mason University</p>
+      <p class="statement">I make multimodal models see what's actually there: reducing hallucination through decoding, attention, and self-improvement.</p>
       <p>
         I am a Ph.D. candidate at George Mason University, advised by
         <a href="https://zziwei.github.io/" target="_blank" rel="noopener">Prof. Ziwei Zhu</a>.
@@ -216,7 +267,7 @@
         Scientist at <b>Amazon</b>, and a Data Science &amp; ML Intern at <b>Wayfair</b>.
         Before GMU, I earned an M.Sc. in Systems Engineering from the University of Virginia.
       </p>
-      <p>I expect to graduate in <b>August 2027</b>.</p>
+      <div class="market"><b>I am on the job market</b> for full-time <b>Research Scientist / Applied Scientist</b> roles starting in 2027 (graduating August 2027). Feel free to reach out at <a href="mailto:mfazli@gmu.edu">mfazli@gmu.edu</a>.</div>
       <div class="links">
         <a class="btn" href="mailto:mfazli@gmu.edu">
           <svg viewBox="0 0 24 24"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5z"/></svg>Email</a>
@@ -237,6 +288,7 @@
     <h2>News</h2>
     <div class="news-box">
       <ul class="news">
+        <li><span class="date">Sep 2026</span><span>Preprint <a href="https://arxiv.org/abs/2609.01888" target="_blank" rel="noopener"><i>Does Playing it Safe Count as Faithfulness? Reassessing LVLM Hallucination Mitigation Methods</i></a> is now on arXiv.</span></li>
         <li><span class="date">Aug 2026</span><span>Our paper <a href="https://arxiv.org/abs/2604.10441" target="_blank" rel="noopener"><i>VeriSim: A Configurable Framework for Stress-Testing Medical AI Under Patient Communication Noise</i></a> was accepted to <b>EMNLP 2026 Findings</b>!</span></li>
         <li><span class="date">Aug 2026</span><span>Wrapped up my internship at <b>Google</b> as a Ph.D. SWE Intern with the Persistent Disk (PD) team in Google Cloud.</span></li>
         <li><span class="date">Apr 2026</span><span>Our paper <a href="https://aclanthology.org/2026.findings-acl.2048/" target="_blank" rel="noopener"><i>Inject to Heal: Alleviating Hallucination in LVLMs via Context Embedding Injection</i></a> was accepted to <b>ACL 2026 Findings</b>!</span></li>
@@ -274,6 +326,7 @@
         <div class="meta">Google Cloud Platform, Persistent Disk · Kirkland, WA</div>
         <ul>
           <li>Designed and implemented a multi-agent AI framework to automate slow-IO debugging and root-cause analysis for GCP's backend storage, saving hundreds of engineering hours per year.</li>
+          <li>Triaged 20 production incidents over 3 weeks with the framework.</li>
         </ul>
       </div>
     </div>
@@ -338,34 +391,39 @@
         <div class="card current">
           <span class="tag">Current project</span>
           <h3>Self-Improving Multimodal Models for Improved Visual Understanding</h3>
+          <img class="fig" src="images/figs/self-improving.jpg" alt="" onload="this.style.display='block'" onerror="this.remove()">
           <p>Vision-language models often lean on language priors instead of looking closely at the image. I am building frameworks in which a model improves its own visual understanding by generating, checking, and learning from its own visually grounded feedback, without relying on large amounts of new human annotation.</p>
         </div>
         <div class="card">
           <span class="tag">WACV 2026</span>
           <h3>CAAC: Confidence-Aware Attention Calibration</h3>
+          <img class="fig" src="images/figs/caac.jpg" alt="CAAC framework overview" onload="this.style.display='block'" onerror="this.remove()">
           <p>A training-free method that corrects spatial perception bias and modality bias in LVLMs through visual-token calibration and confidence-guided attention re-scaling, reducing hallucination on CHAIR, AMBER, and POPE.</p>
           <div class="pill-links">
-            <a href="https://openaccess.thecvf.com/content/WACV2026/html/Fazli_CAAC_Confidence-Aware_Attention_Calibration_to_Reduce_Hallucinations_in_Large_Vision-Language_WACV_2026_paper.html" target="_blank" rel="noopener">Paper</a>
-            <a href="https://arxiv.org/abs/2505.21472" target="_blank" rel="noopener">arXiv</a>
-            <a href="https://github.com/mehrdadfazli/CAAC" target="_blank" rel="noopener">Code</a>
+            <a class="l-paper" href="https://openaccess.thecvf.com/content/WACV2026/html/Fazli_CAAC_Confidence-Aware_Attention_Calibration_to_Reduce_Hallucinations_in_Large_Vision-Language_WACV_2026_paper.html" target="_blank" rel="noopener">Paper</a>
+            <a class="l-arxiv" href="https://arxiv.org/abs/2505.21472" target="_blank" rel="noopener">arXiv</a>
+            <a class="l-code" href="https://github.com/mehrdadfazli/CAAC" target="_blank" rel="noopener">Code</a>
           </div>
         </div>
         <div class="card">
           <span class="tag">ACL 2026 Findings</span>
           <h3>Inject to Heal: Context Embedding Injection</h3>
+          <img class="fig" src="images/figs/cei.jpg" alt="Context Embedding Injection overview" onload="this.style.display='block'" onerror="this.remove()">
           <p>Truthful tokens build up probability earlier across decoder layers than hallucinated ones. CEI uses the hidden state of the last input token to keep generation grounded in the image, with static and confidence-adaptive variants.</p>
           <div class="pill-links">
-            <a href="https://aclanthology.org/2026.findings-acl.2048/" target="_blank" rel="noopener">Paper</a>
-            <a href="https://arxiv.org/abs/2601.05939" target="_blank" rel="noopener">arXiv</a>
-            <a href="https://github.com/mehrdadfazli/CEI" target="_blank" rel="noopener">Code</a>
+            <a class="l-paper" href="https://aclanthology.org/2026.findings-acl.2048/" target="_blank" rel="noopener">Paper</a>
+            <a class="l-arxiv" href="https://arxiv.org/abs/2601.05939" target="_blank" rel="noopener">arXiv</a>
+            <a class="l-code" href="https://github.com/mehrdadfazli/CEI" target="_blank" rel="noopener">Code</a>
           </div>
         </div>
         <div class="card">
           <span class="tag">Under review</span>
-          <h3>Rethinking Faithfulness Evaluation in LVLMs</h3>
-          <p>A diagnostic study asking whether hallucination-mitigation methods truly improve grounding or just decode more conservatively, evaluating 7 inference-time methods across 3 LVLMs and 4 benchmarks.</p>
+          <h3>Does Playing it Safe Count as Faithfulness?</h3>
+          <img class="fig" src="images/figs/safe.jpg" alt="" onload="this.style.display='block'" onerror="this.remove()">
+          <p>A diagnostic study asking whether hallucination-mitigation methods truly improve grounding or just decode more conservatively, evaluating six inference-time methods across three LVLMs and four benchmarks.</p>
           <div class="pill-links">
-            <a href="https://github.com/mehrdadfazli/AssessHalVLM" target="_blank" rel="noopener">Code</a>
+            <a class="l-arxiv" href="https://arxiv.org/abs/2609.01888" target="_blank" rel="noopener">arXiv</a>
+            <a class="l-code" href="https://github.com/mehrdadfazli/AssessHalVLM" target="_blank" rel="noopener">Code</a>
           </div>
         </div>
       </div>
@@ -378,30 +436,33 @@
         <div class="card">
           <span class="tag">EMNLP 2026 Findings</span>
           <h3>VeriSim: Stress-Testing Medical AI</h3>
+          <img class="fig" src="images/figs/verisim.jpg" alt="VeriSim framework overview" onload="this.style.display='block'" onerror="this.remove()">
           <p>A patient simulator that injects controllable, clinically grounded communication noise while verifying facts against UMLS, showing diagnostic models lose 15–25% accuracy under realistic patient behavior.</p>
           <div class="pill-links">
-            <a href="https://arxiv.org/abs/2604.10441" target="_blank" rel="noopener">arXiv</a>
-            <a href="https://github.com/mohitmarvania/VeriSim" target="_blank" rel="noopener">Code</a>
+            <a class="l-arxiv" href="https://arxiv.org/abs/2604.10441" target="_blank" rel="noopener">arXiv</a>
+            <a class="l-code" href="https://github.com/mohitmarvania/VeriSim" target="_blank" rel="noopener">Code</a>
           </div>
         </div>
         <div class="card">
           <span class="tag">IEEE BigData 2023</span>
           <h3>COVID-19 Forecasting with Deep Learning</h3>
+          <img class="fig" src="images/figs/covid-dl.jpg" alt="COVID-19 forecasts from DeepTCN and TFT" onload="this.style.display='block'" onerror="this.remove()">
           <p>Temporal convolutional networks and Temporal Fusion Transformers using wastewater viral load and socio-economic data to improve COVID-19 forecasts.</p>
           <div class="pill-links">
-            <a href="https://ieeexplore.ieee.org/abstract/document/10386828" target="_blank" rel="noopener">Paper</a>
-            <a href="https://arxiv.org/abs/2212.08798" target="_blank" rel="noopener">arXiv</a>
-            <a href="https://github.com/mehrdadfazli/DeepLearning-COVID19-wastewater" target="_blank" rel="noopener">Code</a>
+            <a class="l-paper" href="https://ieeexplore.ieee.org/abstract/document/10386828" target="_blank" rel="noopener">Paper</a>
+            <a class="l-arxiv" href="https://arxiv.org/abs/2212.08798" target="_blank" rel="noopener">arXiv</a>
+            <a class="l-code" href="https://github.com/mehrdadfazli/DeepLearning-COVID19-wastewater" target="_blank" rel="noopener">Code</a>
           </div>
         </div>
         <div class="card">
           <span class="tag">IEEE BigData 2021</span>
           <h3>Wastewater-Based COVID-19 Surveillance</h3>
+          <img class="fig" src="images/figs/wastewater.jpg" alt="" onload="this.style.display='block'" onerror="this.remove()">
           <p>Predicting community infections from wastewater RNA concentration with partially observed Markov processes and SEIR models (UVA COVID-19 surveillance program).</p>
           <div class="pill-links">
-            <a href="https://ieeexplore.ieee.org/document/9671543" target="_blank" rel="noopener">Paper</a>
-            <a href="https://www.medrxiv.org/content/10.1101/2021.10.19.21265221v1" target="_blank" rel="noopener">medRxiv</a>
-            <a href="https://github.com/Shakeri-Lab/COVID-SEIR" target="_blank" rel="noopener">Code</a>
+            <a class="l-paper" href="https://ieeexplore.ieee.org/document/9671543" target="_blank" rel="noopener">Paper</a>
+            <a class="l-arxiv" href="https://www.medrxiv.org/content/10.1101/2021.10.19.21265221v1" target="_blank" rel="noopener">medRxiv</a>
+            <a class="l-code" href="https://github.com/Shakeri-Lab/COVID-SEIR" target="_blank" rel="noopener">Code</a>
           </div>
         </div>
       </div>
@@ -414,11 +475,12 @@
         <div class="card">
           <span class="tag">AAAI 2026 · Oral</span>
           <h3>ProtoSurE: Prototype-Based Explanations for LLMs</h3>
+          <img class="fig" src="images/figs/protosure.jpg" alt="ProtoSurE framework overview" onload="this.style.display='block'" onerror="this.remove()">
           <p>A prototype-based surrogate framework that gives faithful, sentence-level explanations for black-box LLM classifiers by matching inputs to human-understandable prototypes.</p>
           <div class="pill-links">
-            <a href="https://ojs.aaai.org/index.php/AAAI/article/view/39892" target="_blank" rel="noopener">Paper</a>
-            <a href="https://arxiv.org/abs/2505.18970" target="_blank" rel="noopener">arXiv</a>
-            <a href="https://github.com/weibowen555/ProtoSurE" target="_blank" rel="noopener">Code</a>
+            <a class="l-paper" href="https://ojs.aaai.org/index.php/AAAI/article/view/39892" target="_blank" rel="noopener">Paper</a>
+            <a class="l-arxiv" href="https://arxiv.org/abs/2505.18970" target="_blank" rel="noopener">arXiv</a>
+            <a class="l-code" href="https://github.com/weibowen555/ProtoSurE" target="_blank" rel="noopener">Code</a>
           </div>
         </div>
       </div>
@@ -431,20 +493,22 @@
         <div class="card">
           <span class="tag">IHCI 2020 · Best Paper</span>
           <h3>HHAR-Net: Hierarchical Activity Recognition</h3>
+          <img class="fig" src="images/figs/hharnet.jpg" alt="" onload="this.style.display='block'" onerror="this.remove()">
           <p>A two-level hierarchical neural classifier for smartphone and smartwatch sensor data that outperforms flat architectures.</p>
           <div class="pill-links">
-            <a href="https://link.springer.com/chapter/10.1007/978-3-030-68449-5_6" target="_blank" rel="noopener">Paper</a>
-            <a href="https://arxiv.org/abs/2010.16052" target="_blank" rel="noopener">arXiv</a>
-            <a href="https://github.com/mehrdadfazli/HHAR-Net" target="_blank" rel="noopener">Code</a>
+            <a class="l-paper" href="https://link.springer.com/chapter/10.1007/978-3-030-68449-5_6" target="_blank" rel="noopener">Paper</a>
+            <a class="l-arxiv" href="https://arxiv.org/abs/2010.16052" target="_blank" rel="noopener">arXiv</a>
+            <a class="l-code" href="https://github.com/mehrdadfazli/HHAR-Net" target="_blank" rel="noopener">Code</a>
           </div>
         </div>
         <div class="card">
           <span class="tag">FUSION 2023</span>
           <h3>Sensor Fusion for Activity Recognition</h3>
+          <img class="fig" src="images/figs/naps.jpg" alt="" onload="this.style.display='block'" onerror="this.remove()">
           <p>A Dempster–Shafer-based fusion of smart-device sensors that builds adaptable, uncertainty-aware models of exercise and sedentary activity.</p>
           <div class="pill-links">
-            <a href="https://ieeexplore.ieee.org/abstract/document/10224103" target="_blank" rel="noopener">Paper</a>
-            <a href="https://github.com/mehrdadfazli/NAPS-Fusion" target="_blank" rel="noopener">Code</a>
+            <a class="l-paper" href="https://ieeexplore.ieee.org/abstract/document/10224103" target="_blank" rel="noopener">Paper</a>
+            <a class="l-code" href="https://github.com/mehrdadfazli/NAPS-Fusion" target="_blank" rel="noopener">Code</a>
           </div>
         </div>
       </div>
@@ -457,10 +521,11 @@
         <div class="card">
           <span class="tag">EJOR 2023</span>
           <h3>Price Optimization in a Network</h3>
+          <img class="fig" src="images/figs/pricing.jpg" alt="Sales propagation model for two competing products" onload="this.style.display='block'" onerror="this.remove()">
           <p>A stochastic model of sales propagation among consumers to study competitive and cooperative pricing under local network effects.</p>
           <div class="pill-links">
-            <a href="https://www.sciencedirect.com/science/article/abs/pii/S0377221723003375" target="_blank" rel="noopener">Paper</a>
-            <a href="https://github.com/Shakeri-Lab/Network-Compt" target="_blank" rel="noopener">Code</a>
+            <a class="l-paper" href="https://www.sciencedirect.com/science/article/abs/pii/S0377221723003375" target="_blank" rel="noopener">Paper</a>
+            <a class="l-code" href="https://github.com/Shakeri-Lab/Network-Compt" target="_blank" rel="noopener">Code</a>
           </div>
         </div>
       </div>
@@ -477,9 +542,11 @@
           <div class="pub-title">VeriSim: A Configurable Framework for Stress-Testing Medical AI Under Patient Communication Noise</div>
           <div class="authors">Sina Mansouri*, Mohit Marvania*, Vibhavari Ashok Shihorkar, Han Ngoc Tran, Kazhal Shafiei, <b>Mehrdad Fazli</b>, Yikuan Li, Ziwei Zhu</div>
           <div class="pill-links">
-            <a href="https://arxiv.org/abs/2604.10441" target="_blank" rel="noopener">arXiv</a>
-            <a href="https://github.com/mohitmarvania/VeriSim" target="_blank" rel="noopener">Code</a>
+            <a class="l-arxiv" href="https://arxiv.org/abs/2604.10441" target="_blank" rel="noopener">arXiv</a>
+            <a class="l-code" href="https://github.com/mohitmarvania/VeriSim" target="_blank" rel="noopener">Code</a>
+            <button class="l-abs" type="button" aria-expanded="false">Abstract</button>
           </div>
+          <div class="abstract" hidden>Medical large language models are typically evaluated on idealized patient cases that do not reflect how real patients communicate. We introduce VeriSim, a patient simulation framework that injects controllable noise along six clinically grounded communication dimensions while substantially preserving each patient's medical record. Truth adherence is supported by a verifier that extracts atomic claims from each candidate utterance and judges them against a UMLS-grounded vector index built with BioLORD embeddings, using the retrieved atoms' structured clinical metadata (e.g., drug class, anatomical site, treats-condition relations) rather than surface-text similarity alone. Across seven open-weight LLMs, realistic noise reduces diagnostic accuracy by 15-25 percentage points and increases conversation length by 34-55%; the 7-8B models degrade 1.4x more than 70B+ models. A board-certified physician and a licensed nurse rate VeriSim's conversations highly on truth, realism, clinical utility, and noise fidelity (inter-annotator agreement &ge; 0.80 across all dimensions), and an LLM-as-judge closely tracks their ratings, enabling scalable evaluation.</div>
         </div>
       </li>
       <li>
@@ -488,10 +555,12 @@
           <div class="pub-title">Inject to Heal: Alleviating Hallucination in LVLMs via Context Embedding Injection</div>
           <div class="authors"><b>Mehrdad Fazli</b>, Bowen Wei, Ziwei Zhu</div>
           <div class="pill-links">
-            <a href="https://aclanthology.org/2026.findings-acl.2048/" target="_blank" rel="noopener">Paper</a>
-            <a href="https://arxiv.org/abs/2601.05939" target="_blank" rel="noopener">arXiv</a>
-            <a href="https://github.com/mehrdadfazli/CEI" target="_blank" rel="noopener">Code</a>
+            <a class="l-paper" href="https://aclanthology.org/2026.findings-acl.2048/" target="_blank" rel="noopener">Paper</a>
+            <a class="l-arxiv" href="https://arxiv.org/abs/2601.05939" target="_blank" rel="noopener">arXiv</a>
+            <a class="l-code" href="https://github.com/mehrdadfazli/CEI" target="_blank" rel="noopener">Code</a>
+            <button class="l-abs" type="button" aria-expanded="false">Abstract</button>
           </div>
+          <div class="abstract" hidden>Hallucinations&mdash;generating responses inconsistent with the visual input&mdash;remain a critical limitation of large vision-language models (LVLMs), especially in open-ended tasks such as image captioning and visual reasoning. In this work, we probe the layer-wise generation dynamics that drive hallucinations and propose a training-free mitigation strategy. Employing the Logit Lens, we examine how LVLMs construct next-token distributions across decoder layers, uncovering a pronounced commitment-depth gap: truthful tokens accumulate probability mass on their final candidates earlier than hallucinatory ones. Drawing on this discovery, we introduce Context Embedding injection (CEI), a lightweight method that harnesses the hidden state of the last input token&mdash;the context embedding&mdash;as a grounding signal to maintain visual fidelity throughout decoding and curb hallucinations. Evaluated on the CHAIR, AMBER, and MMHal-Bench benchmarks (with a maximum token length of 512), CEI outperforms state-of-the-art baselines across three LVLMs, with its dynamic variant yielding the lowest overall hallucination rates. By integrating novel mechanistic insights with a scalable intervention, this work advances the mitigation of hallucinations in LVLMs.</div>
         </div>
       </li>
       <li>
@@ -500,10 +569,12 @@
           <div class="pub-title">Making Sense of LLM Decisions: A Prototype-based Framework for Explainable Classification</div>
           <div class="authors">Bowen Wei, <b>Mehrdad Fazli</b>, Ziwei Zhu</div>
           <div class="pill-links">
-            <a href="https://ojs.aaai.org/index.php/AAAI/article/view/39892" target="_blank" rel="noopener">Paper</a>
-            <a href="https://arxiv.org/abs/2505.18970" target="_blank" rel="noopener">arXiv</a>
-            <a href="https://github.com/weibowen555/ProtoSurE" target="_blank" rel="noopener">Code</a>
+            <a class="l-paper" href="https://ojs.aaai.org/index.php/AAAI/article/view/39892" target="_blank" rel="noopener">Paper</a>
+            <a class="l-arxiv" href="https://arxiv.org/abs/2505.18970" target="_blank" rel="noopener">arXiv</a>
+            <a class="l-code" href="https://github.com/weibowen555/ProtoSurE" target="_blank" rel="noopener">Code</a>
+            <button class="l-abs" type="button" aria-expanded="false">Abstract</button>
           </div>
+          <div class="abstract" hidden>Large language models (LLMs) have demonstrated impressive performance on natural language tasks, but their decision-making processes remain largely opaque. Existing explanation methods either suffer from limited faithfulness to the model's reasoning or produce explanations that are difficult for humans to understand. To address these challenges, we propose <b>ProtoSurE</b>, a novel prototype-based surrogate framework that provides faithful and understandable explanations for LLMs. ProtoSurE trains an interpretable-by-design surrogate model that aligns with the target LLM while utilizing sentence-level prototypes as understandable concepts. Extensive experiments show that ProtoSurE consistently outperforms state-of-the-art explanation methods across diverse LLMs and datasets. Importantly, ProtoSurE demonstrates strong data efficiency, requiring relatively few training examples to achieve good performance, making it practical for real-world applications.</div>
         </div>
       </li>
       <li>
@@ -512,20 +583,25 @@
           <div class="pub-title">CAAC: Confidence-Aware Attention Calibration to Reduce Hallucinations in Large Vision-Language Models</div>
           <div class="authors"><b>Mehrdad Fazli</b>, Bowen Wei, Ahmet Sari, Ziwei Zhu</div>
           <div class="pill-links">
-            <a href="https://openaccess.thecvf.com/content/WACV2026/html/Fazli_CAAC_Confidence-Aware_Attention_Calibration_to_Reduce_Hallucinations_in_Large_Vision-Language_WACV_2026_paper.html" target="_blank" rel="noopener">Paper</a>
-            <a href="https://arxiv.org/abs/2505.21472" target="_blank" rel="noopener">arXiv</a>
-            <a href="https://github.com/mehrdadfazli/CAAC" target="_blank" rel="noopener">Code</a>
+            <a class="l-paper" href="https://openaccess.thecvf.com/content/WACV2026/html/Fazli_CAAC_Confidence-Aware_Attention_Calibration_to_Reduce_Hallucinations_in_Large_Vision-Language_WACV_2026_paper.html" target="_blank" rel="noopener">Paper</a>
+            <a class="l-arxiv" href="https://arxiv.org/abs/2505.21472" target="_blank" rel="noopener">arXiv</a>
+            <a class="l-code" href="https://github.com/mehrdadfazli/CAAC" target="_blank" rel="noopener">Code</a>
+            <button class="l-abs" type="button" aria-expanded="false">Abstract</button>
           </div>
+          <div class="abstract" hidden>Large vision-language models (LVLMs) achieve impressive performance on multimodal tasks but often suffer from hallucination, and confidently describe objects or attributes not present in the image. Current training-free interventions struggle to maintain accuracy in open-ended and long-form generation scenarios. We introduce the Confidence-Aware Attention Calibration (CAAC) framework to address this challenge by targeting two key biases: spatial perception bias, which distributes attention disproportionately across image tokens, and modality bias, which shifts focus from visual to textual inputs over time. CAAC employs a two-step approach: Visual-Token Calibration (VTC) to balance attention across visual tokens, and Adaptive Attention Re-Scaling (AAR) to reinforce visual grounding guided by the model's confidence. This confidence-driven adjustment ensures consistent visual alignment during generation. Experiments on CHAIR, AMBER, and POPE benchmarks demonstrate that CAAC outperforms baselines, particularly in long-form generations, effectively reducing hallucination.</div>
         </div>
       </li>
       <li>
         <span class="venue">Under review</span>
         <div>
-          <div class="pub-title">Hallucination Mitigation or Conservative Decoding? Rethinking Faithfulness Evaluation in LVLMs</div>
-          <div class="authors"><b>Mehrdad Fazli</b>, et al.</div>
+          <div class="pub-title">Does Playing it Safe Count as Faithfulness? Reassessing LVLM Hallucination Mitigation Methods</div>
+          <div class="authors"><b>Mehrdad Fazli</b>, Sina Mansouri, Mohit Marvania, Ziwei Zhu</div>
           <div class="pill-links">
-            <a href="https://github.com/mehrdadfazli/AssessHalVLM" target="_blank" rel="noopener">Code</a>
+            <a class="l-arxiv" href="https://arxiv.org/abs/2609.01888" target="_blank" rel="noopener">arXiv</a>
+            <a class="l-code" href="https://github.com/mehrdadfazli/AssessHalVLM" target="_blank" rel="noopener">Code</a>
+            <button class="l-abs" type="button" aria-expanded="false">Abstract</button>
           </div>
+          <div class="abstract" hidden>Recent inference-time hallucination mitigation methods for large vision-language models (LVLMs) report strong gains on hallucination benchmarks. However, it remains unclear whether lower hallucination scores reflect improved multimodal grounding or more conservative generation. We evaluate six mitigation methods across three LVLMs and four benchmarks, including hallucination-focused evaluation and the diverse capability benchmark MMStar. Our analysis reveals two consistent patterns. First, hallucination reduction is often coupled with reduced informativeness: methods that lower hallucination rates also reduce object recall, visual coverage, or response detailedness. Second, improvements on hallucination benchmarks do not reliably transfer to broader multimodal capabilities, with methods showing inconsistent or degraded performance on fine-grained perception and reasoning tasks. Our findings suggest that current evaluation protocols may overestimate progress by rewarding conservative generation. We argue that hallucination mitigation should be evaluated as a faithfulness&ndash;informativeness&ndash;capability trade-off rather than through hallucination scores alone.</div>
         </div>
       </li>
       <li>
@@ -534,10 +610,12 @@
           <div class="pub-title">Leveraging Deep Learning to Improve COVID-19 Forecasting Using Wastewater Viral Load</div>
           <div class="authors"><b>Mehrdad Fazli</b>, Heman Shakeri</div>
           <div class="pill-links">
-            <a href="https://ieeexplore.ieee.org/abstract/document/10386828" target="_blank" rel="noopener">Paper</a>
-            <a href="https://arxiv.org/abs/2212.08798" target="_blank" rel="noopener">arXiv</a>
-            <a href="https://github.com/mehrdadfazli/DeepLearning-COVID19-wastewater" target="_blank" rel="noopener">Code</a>
+            <a class="l-paper" href="https://ieeexplore.ieee.org/abstract/document/10386828" target="_blank" rel="noopener">Paper</a>
+            <a class="l-arxiv" href="https://arxiv.org/abs/2212.08798" target="_blank" rel="noopener">arXiv</a>
+            <a class="l-code" href="https://github.com/mehrdadfazli/DeepLearning-COVID19-wastewater" target="_blank" rel="noopener">Code</a>
+            <button class="l-abs" type="button" aria-expanded="false">Abstract</button>
           </div>
+          <div class="abstract" hidden>The outburst of COVID-19 in late 2019 was the start of a health crisis that shook the world and took millions of lives in the ensuing years. Many governments and health officials failed to arrest the rapid circulation of infection in their communities. The long incubation period and the large proportion of asymptomatic cases made COVID-19 particularly elusive to track. However, wastewater surveillance soon became a promising data source in addition to conventional indicators such as confirmed daily cases, hospitalizations, and deaths. Despite the consensus on the effectiveness of wastewater viral load, there is a lack of methodological approaches that leverage viral load to improve COVID-19 forecasting. This paper proposes a deep learning framework to automatically discover the relationship between daily cases and viral load data. We trained a Deep Temporal Convolutional Network (DeepTCN) and a Temporal Fusion Transformer (TFT) model to obtain a global forecasting model. We supplement the daily confirmed cases with viral loads and other socio-economic factors as covariates to the models. Our results suggest that TFT outperforms DeepTCN and learns a better association between viral load and daily cases. We demonstrate that equipping the models with the viral load improves forecasting accuracy and reduces uncertainty. Moreover, viral load is shown to be the second most predictive input, following the containment and health index. Our results reveal the feasibility of training a location-agnostic deep-learning model to capture the dynamics of infection diffusion when wastewater viral load data is available.</div>
         </div>
       </li>
       <li>
@@ -546,9 +624,11 @@
           <div class="pub-title">Exercise and Sedentary Activity Recognition Using Late Fusion: Building Adaptable Uncertain Models</div>
           <div class="authors">Ezequiel Juarez Garcia, Victoria R. Rodrigues, <b>Mehrdad Fazli</b>, Laura E. Barnes, Nicholas J. Napoli</div>
           <div class="pill-links">
-            <a href="https://ieeexplore.ieee.org/abstract/document/10224103" target="_blank" rel="noopener">Paper</a>
-            <a href="https://github.com/mehrdadfazli/NAPS-Fusion" target="_blank" rel="noopener">Code</a>
+            <a class="l-paper" href="https://ieeexplore.ieee.org/abstract/document/10224103" target="_blank" rel="noopener">Paper</a>
+            <a class="l-code" href="https://github.com/mehrdadfazli/NAPS-Fusion" target="_blank" rel="noopener">Code</a>
+            <button class="l-abs" type="button" aria-expanded="false">Abstract</button>
           </div>
+          <div class="abstract" hidden>Wearable smart devices are capable of capturing a variety of information from their users using a multitude of noninvasive sensing modalities. Using features from the raw measurements of wearable devices, sensor fusion enables us to obtain a holistic picture of the users&rsquo; context and monitor their activity state with increased accuracy. Human activity recognition using noninvasive sensors allows us to capture the natural behavior of users in their day-to-day lives. This in-the-wild activity recognition, however, poses several key challenges that must be addressed to create effective classification models. The main challenges are class imbalance, uncertainty in classifier decisions, and large feature spaces. To address them, this study further explores a probabilistic sensor fusion method called Naive Adaptive Probabilistic Sensor (NAPS) Fusion. In doing so, we establish the viability of NAPS Fusion for natural human activity recognition using noninvasive sensing modalities. NAPS Fusion handles dimensionality reduction by creating reduced feature sets and mitigates the class imbalance issue through the use of Synthetic Minority Oversampling Technique (SMOTE). Moreover, NAPS Fusion addresses uncertainty in the decisions of classifiers using a Dempster-Shafer theoretic late fusion framework. Our empirical evaluation demonstrates that NAPS Fusion has broad applications beyond its original design for cognitive state detection. It outperforms similar decision level sensor fusion methods (late fusion using averaging, LFA, and late fusion using learned weights, LFL) in the detection of exercise and sedentary activities such as walking, running, lying down, and sitting. We observe improvements of up to 56% in F1 score and up to 59% in precision with NAPS Fusion over the compared methods.</div>
         </div>
       </li>
       <li>
@@ -557,9 +637,11 @@
           <div class="pub-title">Competitive Pricing Under Local Network Effects</div>
           <div class="authors">Ali Tavasoli, <b>Mehrdad Fazli</b>, Ehsan Ardjmand, William A. Young II, Heman Shakeri · <i>European Journal of Operational Research</i></div>
           <div class="pill-links">
-            <a href="https://www.sciencedirect.com/science/article/abs/pii/S0377221723003375" target="_blank" rel="noopener">Paper</a>
-            <a href="https://github.com/Shakeri-Lab/Network-Compt" target="_blank" rel="noopener">Code</a>
+            <a class="l-paper" href="https://www.sciencedirect.com/science/article/abs/pii/S0377221723003375" target="_blank" rel="noopener">Paper</a>
+            <a class="l-code" href="https://github.com/Shakeri-Lab/Network-Compt" target="_blank" rel="noopener">Code</a>
+            <button class="l-abs" type="button" aria-expanded="false">Abstract</button>
           </div>
+          <div class="abstract" hidden>This paper will study the pricing problem of two competitive products in a market characterized by local externalities. For this purpose, a stochastic model of sales propagation among consumers is developed. This model utilizes a compartmentalized schema denoted as a Markov Chain where the local network effects impact transition rates. A key aspect of the proposed model is its multilayer structure, where products&rsquo; information streams through different layers. The equilibrium conditions and the optimal pricing strategies in a competitive market are examined. The pricing problem is investigated in two settings of homogeneous and heterogeneous (i.e., differential). It is shown that the existence and coexistence of individual products in the equilibrium point depends on an epidemic parameter, called reproduction number, that quantifies the speed by which a product&rsquo;s sales spread over the network. Moreover, it is found that the correlation between the network&rsquo;s layers impacts the equilibrium point. Specifically, a negative correlation between the network&rsquo;s layers allows a wider coexistence region than a positive correlation. Additionally, it is found that a negative correlation between the network&rsquo;s layers provides more flexibility to firms for their pricing practices and yields a higher profit. Finally, different pricing strategies are characterized with respect to model parameters and the centrality measures of different networks. It is observed that while centrality measures and optimal prices are highly correlated, node centralities alone are not enough to determine optimal prices.</div>
         </div>
       </li>
       <li>
@@ -568,10 +650,12 @@
           <div class="pub-title">Wastewater-Based Epidemiological Modeling for Continuous Surveillance of COVID-19 Outbreak</div>
           <div class="authors"><b>Mehrdad Fazli</b>, Samuel Sklar, Michael D. Porter, Brent A. French, Heman Shakeri</div>
           <div class="pill-links">
-            <a href="https://ieeexplore.ieee.org/document/9671543" target="_blank" rel="noopener">Paper</a>
-            <a href="https://www.medrxiv.org/content/10.1101/2021.10.19.21265221v1" target="_blank" rel="noopener">medRxiv</a>
-            <a href="https://github.com/Shakeri-Lab/COVID-SEIR" target="_blank" rel="noopener">Code</a>
+            <a class="l-paper" href="https://ieeexplore.ieee.org/document/9671543" target="_blank" rel="noopener">Paper</a>
+            <a class="l-arxiv" href="https://www.medrxiv.org/content/10.1101/2021.10.19.21265221v1" target="_blank" rel="noopener">medRxiv</a>
+            <a class="l-code" href="https://github.com/Shakeri-Lab/COVID-SEIR" target="_blank" rel="noopener">Code</a>
+            <button class="l-abs" type="button" aria-expanded="false">Abstract</button>
           </div>
+          <div class="abstract" hidden>Using wastewater surveillance as a continuous pooled sampling technique has been in place in many countries since the early stages of the outbreak of COVID-19. Since the beginning of the outbreak, many research works have emerged, studying different aspects of viral SARS-CoV-2 DNA concentrations (viral load) in wastewater and its potential as an early warning method. However, one of the questions that has remained unanswered is the quantitative relation between viral load and clinical indicators such as daily cases, deaths, and hospitalizations. Few studies have tried to couple viral load data with an epidemiological model to relate the number of infections in the community to the viral burden. This paper proposes a stochastic wastewater-based SEIR model to showcase the importance of viral load in the early detection and prediction of an outbreak in a community. We built three models based on whether or not they use the case count and viral load data and compared their simulations and forecasting quality. Our results demonstrate that a simple SEIR model based on viral load data can reliably predict the number of infections in the future. Therefore, wastewater-based surveillance is a promising way of monitoring the spread of COVID19 and can provide city officials with timely information about the circulation of COVID-19 in the community.</div>
         </div>
       </li>
       <li>
@@ -580,10 +664,12 @@
           <div class="pub-title">HHAR-net: Hierarchical Human Activity Recognition using Neural Networks <span class="award">Best Paper Award</span></div>
           <div class="authors"><b>Mehrdad Fazli</b>, Kamran Kowsari, Erfaneh Gharavi, Laura Barnes, Afsaneh Doryab · <i>Springer LNCS</i></div>
           <div class="pill-links">
-            <a href="https://link.springer.com/chapter/10.1007/978-3-030-68449-5_6" target="_blank" rel="noopener">Paper</a>
-            <a href="https://arxiv.org/abs/2010.16052" target="_blank" rel="noopener">arXiv</a>
-            <a href="https://github.com/mehrdadfazli/HHAR-Net" target="_blank" rel="noopener">Code</a>
+            <a class="l-paper" href="https://link.springer.com/chapter/10.1007/978-3-030-68449-5_6" target="_blank" rel="noopener">Paper</a>
+            <a class="l-arxiv" href="https://arxiv.org/abs/2010.16052" target="_blank" rel="noopener">arXiv</a>
+            <a class="l-code" href="https://github.com/mehrdadfazli/HHAR-Net" target="_blank" rel="noopener">Code</a>
+            <button class="l-abs" type="button" aria-expanded="false">Abstract</button>
           </div>
+          <div class="abstract" hidden>Activity recognition using built-in sensors in smart and wearable devices provides great opportunities to understand and detect human behavior in the wild and gives a more holistic view of individuals&rsquo; health and well being. Numerous computational methods have been applied to sensor streams to recognize different daily activities. However, most methods are unable to capture different layers of activities concealed in human behavior. Also, the performance of the models starts to decrease with increasing the number of activities. This research aims at building a hierarchical classification with Neural Networks to recognize human activities based on different levels of abstraction. We evaluate our model on the Extrasensory dataset; a dataset collected in the wild and containing data from smartphones and smartwatches. We use a two-level hierarchy with a total of six mutually exclusive labels namely, &ldquo;lying down&rdquo;, &ldquo;sitting&rdquo;, &ldquo;standing in place&rdquo;, &ldquo;walking&rdquo;, &ldquo;running&rdquo;, and &ldquo;bicycling&rdquo; divided into &ldquo;stationary&rdquo; and &ldquo;non-stationary&rdquo;. The results show that our model can recognize low-level activities (stationary/non-stationary) with 95.8% accuracy and overall accuracy of 92.8% over six labels. This is 3% above our best performing baseline.</div>
         </div>
       </li>
     </ul>
@@ -607,12 +693,22 @@
     </ul>
   </section>
 
+  <section id="service">
+    <h2>Service</h2>
+    <ul class="plain">
+      <li>Reviewer: EMNLP 2026, NeurIPS 2026</li>
+      <li>Teaching Assistant, George Mason University and University of Virginia</li>
+    </ul>
+  </section>
+
   <section id="skills">
     <h2>Skills</h2>
     <dl class="skills">
-      <dt>Languages</dt><dd>Python, SQL, R, MATLAB, C++</dd>
-      <dt>Machine Learning</dt><dd>PyTorch, TensorFlow, Keras, Hugging Face, Scikit-learn, Pandas, NumPy</dd>
-      <dt>Cloud &amp; Tools</dt><dd>GCP (Vertex AI, BigQuery), AWS (EC2, S3, RDS, SageMaker), PySpark, Bash, Git</dd>
+      <dt>Research areas</dt><dd>Multimodal LLMs / vision-language models, hallucination mitigation, evaluation &amp; benchmarking, explainable AI</dd>
+      <dt>Post-training</dt><dd>Supervised fine-tuning (SFT), LoRA / PEFT, knowledge distillation, reinforcement learning</dd>
+      <dt>Agentic AI</dt><dd>Multi-agent systems, tool use, LLM-driven debugging &amp; root-cause analysis</dd>
+      <dt>Frameworks</dt><dd>PyTorch, Hugging Face Transformers, scikit-learn</dd>
+      <dt>Languages &amp; cloud</dt><dd>Python, SQL, C++, Bash · GCP (Vertex AI, BigQuery), AWS (SageMaker), PySpark, Git</dd>
     </dl>
   </section>
 
@@ -622,5 +718,32 @@
   <div class="wrap">© 2026 Mehrdad Fazli · Last updated September 2026</div>
 </footer>
 
+<script>
+  document.querySelectorAll('.l-abs').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var box = btn.closest('li').querySelector('.abstract');
+      var open = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!open));
+      box.hidden = open;
+    });
+  });
+  document.querySelector('.theme-toggle').addEventListener('click', function () {
+    var next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    try { localStorage.setItem('theme', next); } catch (e) {}
+  });
+  document.querySelectorAll('.fig').forEach(function (img) {
+    img.addEventListener('click', function () {
+      var box = document.createElement('div'); box.className = 'lightbox';
+      var big = document.createElement('img'); big.src = img.src; big.alt = img.alt;
+      box.appendChild(big); document.body.appendChild(box);
+      function close() { box.remove(); document.removeEventListener('keydown', esc); }
+      function esc(e) { if (e.key === 'Escape') close(); }
+      box.addEventListener('click', close); document.addEventListener('keydown', esc);
+    });
+  });
+</script>
+<!-- Visitor analytics (GoatCounter). Works after you create the account "mehrdadfazli" at goatcounter.com -->
+<script data-goatcounter="https://mehrdadfazli.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
 </body>
 </html>
