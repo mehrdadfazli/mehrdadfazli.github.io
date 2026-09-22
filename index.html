@@ -146,7 +146,8 @@
 
     @media (max-width: 680px) {
       nav .brand { display: none; }
-      nav ul { gap: 16px; }
+      nav ul { gap: 14px; }
+      nav ul a { font-size: 13.5px; }
       .about { grid-template-columns: 1fr; gap: 20px; text-align: center; padding-top: 32px; }
       .photo { width: 150px; height: 150px; margin: 0 auto; font-size: 44px; }
       .links { justify-content: center; }
@@ -160,6 +161,19 @@
       .skills { grid-template-columns: 1fr; }
       .skills dd { margin-bottom: 8px; }
     }
+
+    /* v2 additions */
+    .news-box { max-height: 300px; overflow-y: auto; border: 1px solid var(--border); border-radius: 12px; padding: 8px 16px; background: var(--bg-soft); }
+    .news li { border-bottom: 1px dashed var(--border); padding: 8px 0; }
+    .news li:last-child { border-bottom: none; }
+    .logo img { width: 40px; height: 40px; object-fit: contain; }
+    .logo { background: #fff; }
+    .area { margin-bottom: 28px; }
+    .area-title { font-size: 15px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); margin: 0 0 12px; }
+    .card.current { border-color: var(--accent); box-shadow: inset 3px 0 0 var(--accent); }
+    .award { display: inline-block; font-size: 12px; font-weight: 600; color: #8a5a00; background: #fdf1d8; padding: 1px 8px; border-radius: 6px; margin-left: 6px; vertical-align: middle; }
+    @media (prefers-color-scheme: dark) { .award { color: #f3c969; background: #3a2e14; } }
+    @media (max-width: 680px) { .logo img { width: 30px; height: 30px; } }
   </style>
 </head>
 <body>
@@ -169,6 +183,7 @@
     <a class="brand" href="#">Mehrdad Fazli</a>
     <ul>
       <li><a href="#about">About</a></li>
+      <li><a href="#news">News</a></li>
       <li><a href="#experience">Experience</a></li>
       <li><a href="#research">Research</a></li>
       <li><a href="#publications">Publications</a></li>
@@ -181,7 +196,6 @@
 
   <!-- ============ ABOUT ============ -->
   <section id="about" class="about">
-    <!-- To use your photo: put a square image at images/profile.jpg -->
     <div>
       <img class="photo" src="images/profile.jpg" alt="Mehrdad Fazli"
            onerror="this.outerHTML='<div class=&quot;photo&quot;>MF</div>'">
@@ -191,44 +205,59 @@
       <p class="role">Ph.D. Candidate in Computer Science · George Mason University</p>
       <p>
         I am a Ph.D. candidate at George Mason University, advised by
-        Dr. Ziwei Zhu.
-        My research focuses on <b>hallucination in large vision-language models (LVLMs)</b> —
-        understanding why multimodal models describe things that aren't there, and designing
-        methods to make them more faithful. I also work on the robustness of medical AI and on
-        explainability of LLM decisions.
+        <a href="https://zziwei.github.io/" target="_blank" rel="noopener">Prof. Ziwei Zhu</a>.
+        My research focuses on <b>multimodal AI</b>, in particular <b>hallucination in large
+        vision-language models (LVLMs)</b>: understanding why these models describe things that
+        aren't there, and building methods that make them more faithful to what they see. I have
+        also worked on medical AI, explainable LLMs, and deep learning for health and sensing data.
       </p>
       <p>
         I have interned as a Ph.D. Software Engineer at <b>Google</b> (Google Cloud), an Applied
         Scientist at <b>Amazon</b>, and a Data Science &amp; ML Intern at <b>Wayfair</b>.
-        Before GMU, I earned an M.Sc. in Systems Engineering from the University of Virginia, where
-        I applied machine learning to human activity recognition and COVID-19 forecasting.
+        Before GMU, I earned an M.Sc. in Systems Engineering from the University of Virginia.
       </p>
-      <p>I expect to graduate in <b>May 2027</b>.</p>
+      <p>I expect to graduate in <b>August 2027</b>.</p>
       <div class="links">
         <a class="btn" href="mailto:mfazli@gmu.edu">
           <svg viewBox="0 0 24 24"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5z"/></svg>Email</a>
         <a class="btn" href="assets/Mehrdad_Fazli_CV.pdf">
           <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8zm-1 7V3.5L18.5 9zM8 13h8v2H8zm0 4h8v2H8z"/></svg>CV</a>
+        <a class="btn" href="https://scholar.google.com/citations?user=e7AeExMAAAAJ&amp;hl=en" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M12 3 1 9l11 6 9-4.9V17h2V9zm-6.8 9.7V16c0 1.9 3 3.5 6.8 3.5s6.8-1.6 6.8-3.5v-3.3L12 16.5z"/></svg>Google Scholar</a>
         <a class="btn" href="https://github.com/mehrdadfazli" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24"><path d="M12 .5a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.1c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.7 18.3 5 18.3 5c.6 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .5z"/></svg>GitHub</a>
         <a class="btn" href="https://www.linkedin.com/in/mehrdad-fazli-66511479/" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24"><path d="M20.4 2H3.6A1.6 1.6 0 0 0 2 3.6v16.8A1.6 1.6 0 0 0 3.6 22h16.8a1.6 1.6 0 0 0 1.6-1.6V3.6A1.6 1.6 0 0 0 20.4 2zM8 19H5V9h3zM6.5 7.7a1.7 1.7 0 1 1 0-3.4 1.7 1.7 0 0 1 0 3.4zM19 19h-3v-4.9c0-1.2 0-2.7-1.6-2.7s-1.9 1.3-1.9 2.6v5h-3V9h2.9v1.4c.4-.8 1.4-1.6 2.9-1.6 3.1 0 3.7 2 3.7 4.7z"/></svg>LinkedIn</a>
-        <!-- Add Google Scholar: copy a line above and paste your Scholar profile URL -->
       </div>
     </div>
   </section>
 
-  <!-- ============ NEWS ============ -->
+  <!-- ============ NEWS (scrollable) ============ -->
   <section id="news">
     <h2>News</h2>
-    <ul class="news">
-      <li><span class="date">Aug 2026</span><span><i>VeriSim</i>, a framework for stress-testing medical AI under patient communication noise, accepted to <b>EMNLP 2026</b>.</span></li>
-      <li><span class="date">May 2026</span><span>Started as a Ph.D. SWE Intern at <b>Google</b> (Google Cloud) in Kirkland, WA.</span></li>
-      <li><span class="date">2026</span><span><i>Inject to Heal</i> accepted to <b>ACL 2026</b>.</span></li>
-      <li><span class="date">Dec 2025</span><span>Joined <b>Amazon</b> as an Applied Scientist Intern in New York, NY.</span></li>
-      <li><span class="date">2025</span><span><i>CAAC</i> accepted to <b>WACV 2026</b>, and our prototype-based explainability paper accepted to <b>AAAI 2026</b>.</span></li>
-      <li><span class="date">2024</span><span>Received the Outstanding Graduate Teaching Assistant Award, CS Department, GMU.</span></li>
-    </ul>
+    <div class="news-box">
+      <ul class="news">
+        <li><span class="date">Aug 2026</span><span>Our paper <a href="https://arxiv.org/abs/2604.10441" target="_blank" rel="noopener"><i>VeriSim: A Configurable Framework for Stress-Testing Medical AI Under Patient Communication Noise</i></a> was accepted to <b>EMNLP 2026 Findings</b>!</span></li>
+        <li><span class="date">Aug 2026</span><span>Wrapped up my internship at <b>Google</b> as a Ph.D. SWE Intern with the Persistent Disk (PD) team in Google Cloud.</span></li>
+        <li><span class="date">Apr 2026</span><span>Our paper <a href="https://aclanthology.org/2026.findings-acl.2048/" target="_blank" rel="noopener"><i>Inject to Heal: Alleviating Hallucination in LVLMs via Context Embedding Injection</i></a> was accepted to <b>ACL 2026 Findings</b>!</span></li>
+        <li><span class="date">Mar 2026</span><span>Wrapped up my internship with <b>Amazon</b> as an Applied Scientist Intern.</span></li>
+        <li><span class="date">Mar 2026</span><span>Attended <b>WACV 2026</b> in Tucson, AZ and presented our paper <a href="https://openaccess.thecvf.com/content/WACV2026/html/Fazli_CAAC_Confidence-Aware_Attention_Calibration_to_Reduce_Hallucinations_in_Large_Vision-Language_WACV_2026_paper.html" target="_blank" rel="noopener"><i>CAAC</i></a>.</span></li>
+        <li><span class="date">Mar 2026</span><span>Accepted a Ph.D. SWE internship offer from <b>Google</b>!</span></li>
+        <li><span class="date">Jan 2026</span><span>Submitted two papers to ACL 2026. The preprint of <a href="https://arxiv.org/abs/2601.05939" target="_blank" rel="noopener"><i>Context-Aware Decoding for Faithful Vision-Language Generation</i></a> is now on arXiv.</span></li>
+        <li><span class="date">Nov 2025</span><span><a href="https://arxiv.org/abs/2505.21472" target="_blank" rel="noopener"><i>Mitigating Hallucination in Large Vision-Language Models via Adaptive Attention Calibration</i></a> (CAAC) was accepted at <b>WACV 2026</b>.</span></li>
+        <li><span class="date">Nov 2025</span><span><a href="https://arxiv.org/abs/2505.18970" target="_blank" rel="noopener"><i>Learning to Explain: Prototype-Based Surrogate Models for LLM Classification</i></a> was accepted at <b>AAAI 2026</b> (Oral).</span></li>
+        <li><span class="date">Sep 2025</span><span>Accepted an offer to join <b>Amazon</b> as an Applied Scientist Intern (Dec 2025 – Feb 2026).</span></li>
+        <li><span class="date">May 2025</span><span>Preprint <a href="https://arxiv.org/abs/2505.21472" target="_blank" rel="noopener"><i>Mitigating Hallucination in LVLMs via Adaptive Attention Calibration</i></a> is now on arXiv.</span></li>
+        <li><span class="date">May 2025</span><span>Preprint <a href="https://arxiv.org/abs/2505.18970" target="_blank" rel="noopener"><i>Learning to Explain: Prototype-Based Surrogate Models for LLM Classification</i></a> is now on arXiv.</span></li>
+        <li><span class="date">Nov 2023</span><span><a href="https://ieeexplore.ieee.org/abstract/document/10386828" target="_blank" rel="noopener"><i>Leveraging Deep Learning to Improve COVID-19 Forecasting Using Wastewater Viral Load</i></a> was accepted at <b>IEEE BigData 2023</b>.</span></li>
+        <li><span class="date">Jun 2023</span><span><a href="https://ieeexplore.ieee.org/abstract/document/10224103" target="_blank" rel="noopener"><i>Exercise and Sedentary Activity Recognition Using Late Fusion</i></a> was presented at the 26th International Conference on Information <b>FUSION</b>.</span></li>
+        <li><span class="date">Apr 2023</span><span><a href="https://www.sciencedirect.com/science/article/abs/pii/S0377221723003375" target="_blank" rel="noopener"><i>Competitive Pricing Under Local Network Effects</i></a> was accepted by the <b>European Journal of Operational Research</b>.</span></li>
+        <li><span class="date">Mar 2023</span><span>Admitted to the Ph.D. program in Computer Science at <a href="https://cs.gmu.edu/" target="_blank" rel="noopener">George Mason University</a>.</span></li>
+        <li><span class="date">Dec 2022</span><span>Preprint <a href="https://arxiv.org/abs/2212.08798" target="_blank" rel="noopener"><i>Leveraging Wastewater Monitoring for COVID-19 Forecasting in the US: a Deep Learning Study</i></a> is now on arXiv.</span></li>
+        <li><span class="date">Jun 2022</span><span>Joined <b>Wayfair</b> as a Data Science and Machine Learning Intern for the summer.</span></li>
+        <li><span class="date">Feb 2022</span><span><a href="https://ieeexplore.ieee.org/document/9671543" target="_blank" rel="noopener"><i>Wastewater-Based Epidemiological Modeling for Continuous Surveillance of COVID-19 Outbreak</i></a> was published at <b>IEEE BigData 2021</b>.</span></li>
+      </ul>
+    </div>
   </section>
 
   <!-- ============ EXPERIENCE ============ -->
@@ -236,21 +265,21 @@
     <h2>Experience</h2>
 
     <div class="job">
-      <div class="logo">G</div>
+      <div class="logo"><img src="https://www.google.com/s2/favicons?domain=google.com&amp;sz=128" alt="Google logo" onerror="this.outerHTML='<span>G</span>'"></div>
       <div>
         <div class="job-head">
           <h3>Ph.D. Software Engineering Intern · Google</h3>
           <span class="meta">May 2026 – Aug 2026</span>
         </div>
-        <div class="meta">Google Cloud Platform · Kirkland, WA</div>
+        <div class="meta">Google Cloud Platform, Persistent Disk · Kirkland, WA</div>
         <ul>
-          <li>Designed and implemented a multi-agent AI framework to automate slow-IO debugging and root-cause analysis for GCP's backend storage (Persistent Disk), saving hundreds of engineering hours per year.</li>
+          <li>Designed and implemented a multi-agent AI framework to automate slow-IO debugging and root-cause analysis for GCP's backend storage, saving hundreds of engineering hours per year.</li>
         </ul>
       </div>
     </div>
 
     <div class="job">
-      <div class="logo">a</div>
+      <div class="logo"><img src="https://www.google.com/s2/favicons?domain=amazon.com&amp;sz=128" alt="Amazon logo" onerror="this.outerHTML='<span>a</span>'"></div>
       <div>
         <div class="job-head">
           <h3>Applied Scientist Intern · Amazon</h3>
@@ -265,7 +294,7 @@
     </div>
 
     <div class="job">
-      <div class="logo">W</div>
+      <div class="logo"><img src="https://www.google.com/s2/favicons?domain=wayfair.com&amp;sz=128" alt="Wayfair logo" onerror="this.outerHTML='<span>W</span>'"></div>
       <div>
         <div class="job-head">
           <h3>Data Science &amp; Machine Learning Intern · Wayfair</h3>
@@ -281,7 +310,7 @@
     </div>
 
     <div class="job">
-      <div class="logo">UVA</div>
+      <div class="logo"><img src="https://www.google.com/s2/favicons?domain=virginia.edu&amp;sz=128" alt="University of Virginia logo" onerror="this.outerHTML='<span>UVA</span>'"></div>
       <div>
         <div class="job-head">
           <h3>Researcher · University of Virginia</h3>
@@ -300,83 +329,141 @@
 
   <!-- ============ RESEARCH ============ -->
   <section id="research">
-    <h2>Research Projects</h2>
-    <div class="projects">
+    <h2>Research</h2>
 
-      <div class="card">
-        <span class="tag">Multimodal AI · Current</span>
-        <h3>Hallucination Analysis &amp; Mitigation in LVLMs</h3>
-        <p>Confidence-Aware Attention Calibration (CAAC) reduces object hallucination through visual-token calibration and adaptive attention re-scaling, evaluated on CHAIR, AMBER, and POPE. Follow-up work injects context embeddings to heal hallucinations and rethinks how faithfulness is evaluated.</p>
-        <div class="pill-links">
-          <a href="https://arxiv.org/abs/2505.21472" target="_blank" rel="noopener">arXiv</a>
-          <a href="https://github.com/mehrdadfazli/CAAC" target="_blank" rel="noopener">Code</a>
+    <!-- Area 1 -->
+    <div class="area">
+      <h3 class="area-title">Multimodal AI &amp; Vision-Language Models</h3>
+      <div class="projects">
+        <div class="card current">
+          <span class="tag">Current project</span>
+          <h3>Self-Improving Multimodal Models for Improved Visual Understanding</h3>
+          <p>Vision-language models often lean on language priors instead of looking closely at the image. I am building frameworks in which a model improves its own visual understanding by generating, checking, and learning from its own visually grounded feedback, without relying on large amounts of new human annotation.</p>
+        </div>
+        <div class="card">
+          <span class="tag">WACV 2026</span>
+          <h3>CAAC: Confidence-Aware Attention Calibration</h3>
+          <p>A training-free method that corrects spatial perception bias and modality bias in LVLMs through visual-token calibration and confidence-guided attention re-scaling, reducing hallucination on CHAIR, AMBER, and POPE.</p>
+          <div class="pill-links">
+            <a href="https://openaccess.thecvf.com/content/WACV2026/html/Fazli_CAAC_Confidence-Aware_Attention_Calibration_to_Reduce_Hallucinations_in_Large_Vision-Language_WACV_2026_paper.html" target="_blank" rel="noopener">Paper</a>
+            <a href="https://arxiv.org/abs/2505.21472" target="_blank" rel="noopener">arXiv</a>
+            <a href="https://github.com/mehrdadfazli/CAAC" target="_blank" rel="noopener">Code</a>
+          </div>
+        </div>
+        <div class="card">
+          <span class="tag">ACL 2026 Findings</span>
+          <h3>Inject to Heal: Context Embedding Injection</h3>
+          <p>Truthful tokens build up probability earlier across decoder layers than hallucinated ones. CEI uses the hidden state of the last input token to keep generation grounded in the image, with static and confidence-adaptive variants.</p>
+          <div class="pill-links">
+            <a href="https://aclanthology.org/2026.findings-acl.2048/" target="_blank" rel="noopener">Paper</a>
+            <a href="https://arxiv.org/abs/2601.05939" target="_blank" rel="noopener">arXiv</a>
+            <a href="https://github.com/mehrdadfazli/CEI" target="_blank" rel="noopener">Code</a>
+          </div>
+        </div>
+        <div class="card">
+          <span class="tag">Under review</span>
+          <h3>Rethinking Faithfulness Evaluation in LVLMs</h3>
+          <p>A diagnostic study asking whether hallucination-mitigation methods truly improve grounding or just decode more conservatively, evaluating 7 inference-time methods across 3 LVLMs and 4 benchmarks.</p>
+          <div class="pill-links">
+            <a href="https://github.com/mehrdadfazli/AssessHalVLM" target="_blank" rel="noopener">Code</a>
+          </div>
         </div>
       </div>
+    </div>
 
-      <div class="card">
-        <span class="tag">Medical AI · Robustness</span>
-        <h3>Stress-Testing Medical AI (VeriSim)</h3>
-        <p>A configurable framework that simulates realistic patient communication noise to test how reliably medical AI systems hold up outside clean benchmark conditions.</p>
-        <div class="pill-links"><span class="meta">EMNLP 2026</span></div>
-      </div>
-
-      <div class="card">
-        <span class="tag">Explainable AI</span>
-        <h3>Prototype-Based Explanations for LLMs</h3>
-        <p>A prototype-based framework that makes LLM classification decisions interpretable by grounding predictions in representative examples.</p>
-        <div class="pill-links"><span class="meta">AAAI 2026</span></div>
-      </div>
-
-      <div class="card">
-        <span class="tag">Recommender Systems · Ongoing</span>
-        <h3>Polarization &amp; Filter Bubbles in Recommendation</h3>
-        <p>A theoretical study of echo chambers when content creators adapt to their audiences, showing that extreme item-side fairness constraints can increase user polarization.</p>
-      </div>
-
-      <div class="card">
-        <span class="tag">Time Series · Epidemiology</span>
-        <h3>COVID-19 Forecasting with Deep Learning</h3>
-        <p>Temporal convolutional networks and Temporal Fusion Transformers using wastewater viral load and socio-economic data to improve COVID-19 forecasts.</p>
-        <div class="pill-links">
-          <a href="https://ieeexplore.ieee.org/abstract/document/10386828" target="_blank" rel="noopener">IEEE BigData '23</a>
-          <a href="https://arxiv.org/abs/2212.08798" target="_blank" rel="noopener">arXiv</a>
-          <a href="https://github.com/mehrdadfazli/DeepLearning-COVID19-wastewater" target="_blank" rel="noopener">Code</a>
+    <!-- Area 2 -->
+    <div class="area">
+      <h3 class="area-title">Medical &amp; Health AI</h3>
+      <div class="projects">
+        <div class="card">
+          <span class="tag">EMNLP 2026 Findings</span>
+          <h3>VeriSim: Stress-Testing Medical AI</h3>
+          <p>A patient simulator that injects controllable, clinically grounded communication noise while verifying facts against UMLS, showing diagnostic models lose 15–25% accuracy under realistic patient behavior.</p>
+          <div class="pill-links">
+            <a href="https://arxiv.org/abs/2604.10441" target="_blank" rel="noopener">arXiv</a>
+            <a href="https://github.com/mohitmarvania/VeriSim" target="_blank" rel="noopener">Code</a>
+          </div>
+        </div>
+        <div class="card">
+          <span class="tag">IEEE BigData 2023</span>
+          <h3>COVID-19 Forecasting with Deep Learning</h3>
+          <p>Temporal convolutional networks and Temporal Fusion Transformers using wastewater viral load and socio-economic data to improve COVID-19 forecasts.</p>
+          <div class="pill-links">
+            <a href="https://ieeexplore.ieee.org/abstract/document/10386828" target="_blank" rel="noopener">Paper</a>
+            <a href="https://arxiv.org/abs/2212.08798" target="_blank" rel="noopener">arXiv</a>
+            <a href="https://github.com/mehrdadfazli/DeepLearning-COVID19-wastewater" target="_blank" rel="noopener">Code</a>
+          </div>
+        </div>
+        <div class="card">
+          <span class="tag">IEEE BigData 2021</span>
+          <h3>Wastewater-Based COVID-19 Surveillance</h3>
+          <p>Predicting community infections from wastewater RNA concentration with partially observed Markov processes and SEIR models (UVA COVID-19 surveillance program).</p>
+          <div class="pill-links">
+            <a href="https://ieeexplore.ieee.org/document/9671543" target="_blank" rel="noopener">Paper</a>
+            <a href="https://www.medrxiv.org/content/10.1101/2021.10.19.21265221v1" target="_blank" rel="noopener">medRxiv</a>
+            <a href="https://github.com/Shakeri-Lab/COVID-SEIR" target="_blank" rel="noopener">Code</a>
+          </div>
         </div>
       </div>
+    </div>
 
-      <div class="card">
-        <span class="tag">Epidemiology</span>
-        <h3>UVA COVID-19 Wastewater Surveillance</h3>
-        <p>Predicting community infections from wastewater RNA concentration with partially observed Markov processes and SEIR models.</p>
-        <div class="pill-links">
-          <a href="https://ieeexplore.ieee.org/abstract/document/9671543" target="_blank" rel="noopener">IEEE BigData '21</a>
-          <a href="https://www.medrxiv.org/content/10.1101/2021.10.19.21265221v1" target="_blank" rel="noopener">medRxiv</a>
-          <a href="https://github.com/Shakeri-Lab/COVID-SEIR" target="_blank" rel="noopener">Code</a>
+    <!-- Area 3 -->
+    <div class="area">
+      <h3 class="area-title">Explainable AI</h3>
+      <div class="projects">
+        <div class="card">
+          <span class="tag">AAAI 2026 · Oral</span>
+          <h3>ProtoSurE: Prototype-Based Explanations for LLMs</h3>
+          <p>A prototype-based surrogate framework that gives faithful, sentence-level explanations for black-box LLM classifiers by matching inputs to human-understandable prototypes.</p>
+          <div class="pill-links">
+            <a href="https://ojs.aaai.org/index.php/AAAI/article/view/39892" target="_blank" rel="noopener">Paper</a>
+            <a href="https://arxiv.org/abs/2505.18970" target="_blank" rel="noopener">arXiv</a>
+            <a href="https://github.com/weibowen555/ProtoSurE" target="_blank" rel="noopener">Code</a>
+          </div>
         </div>
       </div>
+    </div>
 
-      <div class="card">
-        <span class="tag">Sensing · Deep Learning</span>
-        <h3>Human Activity Recognition</h3>
-        <p>HHAR-Net, a two-level hierarchical neural classifier for smartphone and smartwatch sensor data that outperforms flat architectures (Best Paper Award, IHCI). Also a Dempster–Shafer sensor-fusion method for activity recognition.</p>
-        <div class="pill-links">
-          <a href="https://link.springer.com/chapter/10.1007/978-3-030-68449-5_6" target="_blank" rel="noopener">IHCI '20</a>
-          <a href="https://github.com/mehrdadfazli/HHAR-Net" target="_blank" rel="noopener">HHAR-Net Code</a>
-          <a href="https://ieeexplore.ieee.org/abstract/document/10224103" target="_blank" rel="noopener">FUSION '23</a>
-          <a href="https://github.com/mehrdadfazli/NAPS-Fusion" target="_blank" rel="noopener">Fusion Code</a>
+    <!-- Area 4 -->
+    <div class="area">
+      <h3 class="area-title">Human Activity Recognition &amp; Sensing</h3>
+      <div class="projects">
+        <div class="card">
+          <span class="tag">IHCI 2020 · Best Paper</span>
+          <h3>HHAR-Net: Hierarchical Activity Recognition</h3>
+          <p>A two-level hierarchical neural classifier for smartphone and smartwatch sensor data that outperforms flat architectures.</p>
+          <div class="pill-links">
+            <a href="https://link.springer.com/chapter/10.1007/978-3-030-68449-5_6" target="_blank" rel="noopener">Paper</a>
+            <a href="https://arxiv.org/abs/2010.16052" target="_blank" rel="noopener">arXiv</a>
+            <a href="https://github.com/mehrdadfazli/HHAR-Net" target="_blank" rel="noopener">Code</a>
+          </div>
+        </div>
+        <div class="card">
+          <span class="tag">FUSION 2023</span>
+          <h3>Sensor Fusion for Activity Recognition</h3>
+          <p>A Dempster–Shafer-based fusion of smart-device sensors that builds adaptable, uncertainty-aware models of exercise and sedentary activity.</p>
+          <div class="pill-links">
+            <a href="https://ieeexplore.ieee.org/abstract/document/10224103" target="_blank" rel="noopener">Paper</a>
+            <a href="https://github.com/mehrdadfazli/NAPS-Fusion" target="_blank" rel="noopener">Code</a>
+          </div>
         </div>
       </div>
+    </div>
 
-      <div class="card">
-        <span class="tag">Operations Research</span>
-        <h3>Price Optimization in a Network</h3>
-        <p>A stochastic model of sales propagation among consumers to study competitive and cooperative pricing under local network effects.</p>
-        <div class="pill-links">
-          <a href="https://authors.elsevier.com/a/1h99z1LnJ6pHdl" target="_blank" rel="noopener">EJOR '23</a>
-          <a href="https://github.com/Shakeri-Lab/Network-Compt" target="_blank" rel="noopener">Code</a>
+    <!-- Area 5 -->
+    <div class="area">
+      <h3 class="area-title">Operations Research</h3>
+      <div class="projects">
+        <div class="card">
+          <span class="tag">EJOR 2023</span>
+          <h3>Price Optimization in a Network</h3>
+          <p>A stochastic model of sales propagation among consumers to study competitive and cooperative pricing under local network effects.</p>
+          <div class="pill-links">
+            <a href="https://www.sciencedirect.com/science/article/abs/pii/S0377221723003375" target="_blank" rel="noopener">Paper</a>
+            <a href="https://github.com/Shakeri-Lab/Network-Compt" target="_blank" rel="noopener">Code</a>
+          </div>
         </div>
       </div>
-
     </div>
   </section>
 
@@ -385,32 +472,47 @@
     <h2>Publications</h2>
     <ul class="pubs">
       <li>
-        <span class="venue">EMNLP 2026</span>
+        <span class="venue">EMNLP 2026<br>Findings</span>
         <div>
           <div class="pub-title">VeriSim: A Configurable Framework for Stress-Testing Medical AI Under Patient Communication Noise</div>
-          <div class="authors"><b>Mehrdad Fazli</b>, et al.</div>
+          <div class="authors">Sina Mansouri*, Mohit Marvania*, Vibhavari Ashok Shihorkar, Han Ngoc Tran, Kazhal Shafiei, <b>Mehrdad Fazli</b>, Yikuan Li, Ziwei Zhu</div>
+          <div class="pill-links">
+            <a href="https://arxiv.org/abs/2604.10441" target="_blank" rel="noopener">arXiv</a>
+            <a href="https://github.com/mohitmarvania/VeriSim" target="_blank" rel="noopener">Code</a>
+          </div>
         </div>
       </li>
       <li>
-        <span class="venue">ACL 2026</span>
+        <span class="venue">ACL 2026<br>Findings</span>
         <div>
           <div class="pub-title">Inject to Heal: Alleviating Hallucination in LVLMs via Context Embedding Injection</div>
           <div class="authors"><b>Mehrdad Fazli</b>, Bowen Wei, Ziwei Zhu</div>
+          <div class="pill-links">
+            <a href="https://aclanthology.org/2026.findings-acl.2048/" target="_blank" rel="noopener">Paper</a>
+            <a href="https://arxiv.org/abs/2601.05939" target="_blank" rel="noopener">arXiv</a>
+            <a href="https://github.com/mehrdadfazli/CEI" target="_blank" rel="noopener">Code</a>
+          </div>
         </div>
       </li>
       <li>
-        <span class="venue">AAAI 2026</span>
+        <span class="venue">AAAI 2026<br>Oral</span>
         <div>
           <div class="pub-title">Making Sense of LLM Decisions: A Prototype-based Framework for Explainable Classification</div>
           <div class="authors">Bowen Wei, <b>Mehrdad Fazli</b>, Ziwei Zhu</div>
+          <div class="pill-links">
+            <a href="https://ojs.aaai.org/index.php/AAAI/article/view/39892" target="_blank" rel="noopener">Paper</a>
+            <a href="https://arxiv.org/abs/2505.18970" target="_blank" rel="noopener">arXiv</a>
+            <a href="https://github.com/weibowen555/ProtoSurE" target="_blank" rel="noopener">Code</a>
+          </div>
         </div>
       </li>
       <li>
         <span class="venue">WACV 2026</span>
         <div>
           <div class="pub-title">CAAC: Confidence-Aware Attention Calibration to Reduce Hallucinations in Large Vision-Language Models</div>
-          <div class="authors"><b>Mehrdad Fazli</b>, Bowen Wei, Ziwei Zhu</div>
+          <div class="authors"><b>Mehrdad Fazli</b>, Bowen Wei, Ahmet Sari, Ziwei Zhu</div>
           <div class="pill-links">
+            <a href="https://openaccess.thecvf.com/content/WACV2026/html/Fazli_CAAC_Confidence-Aware_Attention_Calibration_to_Reduce_Hallucinations_in_Large_Vision-Language_WACV_2026_paper.html" target="_blank" rel="noopener">Paper</a>
             <a href="https://arxiv.org/abs/2505.21472" target="_blank" rel="noopener">arXiv</a>
             <a href="https://github.com/mehrdadfazli/CAAC" target="_blank" rel="noopener">Code</a>
           </div>
@@ -421,6 +523,9 @@
         <div>
           <div class="pub-title">Hallucination Mitigation or Conservative Decoding? Rethinking Faithfulness Evaluation in LVLMs</div>
           <div class="authors"><b>Mehrdad Fazli</b>, et al.</div>
+          <div class="pill-links">
+            <a href="https://github.com/mehrdadfazli/AssessHalVLM" target="_blank" rel="noopener">Code</a>
+          </div>
         </div>
       </li>
       <li>
@@ -438,8 +543,8 @@
       <li>
         <span class="venue">FUSION 2023</span>
         <div>
-          <div class="pub-title">Exercise and Sedentary Activity Recognition Using Late Fusion</div>
-          <div class="authors"><b>Mehrdad Fazli</b>, et al.</div>
+          <div class="pub-title">Exercise and Sedentary Activity Recognition Using Late Fusion: Building Adaptable Uncertain Models</div>
+          <div class="authors">Ezequiel Juarez Garcia, Victoria R. Rodrigues, <b>Mehrdad Fazli</b>, Laura E. Barnes, Nicholas J. Napoli</div>
           <div class="pill-links">
             <a href="https://ieeexplore.ieee.org/abstract/document/10224103" target="_blank" rel="noopener">Paper</a>
             <a href="https://github.com/mehrdadfazli/NAPS-Fusion" target="_blank" rel="noopener">Code</a>
@@ -450,9 +555,9 @@
         <span class="venue">EJOR 2023</span>
         <div>
           <div class="pub-title">Competitive Pricing Under Local Network Effects</div>
-          <div class="authors">Ali Tavasoli, <b>Mehrdad Fazli</b>, et al. · <i>European Journal of Operational Research</i></div>
+          <div class="authors">Ali Tavasoli, <b>Mehrdad Fazli</b>, Ehsan Ardjmand, William A. Young II, Heman Shakeri · <i>European Journal of Operational Research</i></div>
           <div class="pill-links">
-            <a href="https://authors.elsevier.com/a/1h99z1LnJ6pHdl" target="_blank" rel="noopener">Paper</a>
+            <a href="https://www.sciencedirect.com/science/article/abs/pii/S0377221723003375" target="_blank" rel="noopener">Paper</a>
             <a href="https://github.com/Shakeri-Lab/Network-Compt" target="_blank" rel="noopener">Code</a>
           </div>
         </div>
@@ -463,7 +568,7 @@
           <div class="pub-title">Wastewater-Based Epidemiological Modeling for Continuous Surveillance of COVID-19 Outbreak</div>
           <div class="authors"><b>Mehrdad Fazli</b>, Samuel Sklar, Michael D. Porter, Brent A. French, Heman Shakeri</div>
           <div class="pill-links">
-            <a href="https://ieeexplore.ieee.org/abstract/document/9671543" target="_blank" rel="noopener">Paper</a>
+            <a href="https://ieeexplore.ieee.org/document/9671543" target="_blank" rel="noopener">Paper</a>
             <a href="https://www.medrxiv.org/content/10.1101/2021.10.19.21265221v1" target="_blank" rel="noopener">medRxiv</a>
             <a href="https://github.com/Shakeri-Lab/COVID-SEIR" target="_blank" rel="noopener">Code</a>
           </div>
@@ -472,8 +577,8 @@
       <li>
         <span class="venue">IHCI 2020</span>
         <div>
-          <div class="pub-title">HHAR-Net: Hierarchical Human Activity Recognition using Neural Networks <span class="meta">· Best Paper Award</span></div>
-          <div class="authors"><b>Mehrdad Fazli</b>, et al. · <i>Springer LNCS</i></div>
+          <div class="pub-title">HHAR-net: Hierarchical Human Activity Recognition using Neural Networks <span class="award">Best Paper Award</span></div>
+          <div class="authors"><b>Mehrdad Fazli</b>, Kamran Kowsari, Erfaneh Gharavi, Laura Barnes, Afsaneh Doryab · <i>Springer LNCS</i></div>
           <div class="pill-links">
             <a href="https://link.springer.com/chapter/10.1007/978-3-030-68449-5_6" target="_blank" rel="noopener">Paper</a>
             <a href="https://arxiv.org/abs/2010.16052" target="_blank" rel="noopener">arXiv</a>
@@ -482,13 +587,14 @@
         </div>
       </li>
     </ul>
+    <p class="meta" style="margin-top:10px">* Equal contribution</p>
   </section>
 
   <!-- ============ EDUCATION / AWARDS / SKILLS ============ -->
   <section id="education">
     <h2>Education</h2>
     <ul class="plain">
-      <li><b>Ph.D. in Computer Science</b>, George Mason University, Fairfax, VA · expected May 2027</li>
+      <li><b>Ph.D. in Computer Science</b>, George Mason University, Fairfax, VA · expected Aug 2027</li>
       <li><b>M.Sc. in Systems Engineering</b>, University of Virginia, Charlottesville, VA · May 2023</li>
     </ul>
   </section>
@@ -497,7 +603,7 @@
     <h2>Awards &amp; Honors</h2>
     <ul class="plain">
       <li>Outstanding Graduate Teaching Assistant Award, Department of Computer Science, GMU (2024)</li>
-      <li>Best Paper Award, 12th International Conference on Intelligent Human-Computer Interaction (IHCI)</li>
+      <li>Best Paper Award, 12th International Conference on Intelligent Human-Computer Interaction (IHCI) (2021)</li>
     </ul>
   </section>
 
